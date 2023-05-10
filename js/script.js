@@ -1,3 +1,6 @@
+
+var urlBase = window.location.href;
+
 /*
     Completare le due funzioni indicate e collegare in modo opportuno 
     i metodi alla pagina html. 
@@ -9,7 +12,21 @@
  *  Inizializza l'interfaccia richiedendo i dati necessari 
  * e caricando dinamicamente la select e creando il grafico
  */
-function init(/** EVENTUALI PARAMETRI */){
+
+window.onload = init();
+
+async function init(/** EVENTUALI PARAMETRI */){
+    let perc = await fetch(urlBase + "server/getPercorsi.php", {method:"get"});
+
+    let datiDB = await perc.json();
+    
+    console.log(datiDB)
+
+    var combo = document.getElementById("selPercorsi");
+
+    for(let i = 0; i < datiDB.percorsi.length; i++){
+        combo.innerHTML += "<option value=" + datiDB.percorsi[i].descr + ">" + datiDB.percorsi[i].descr +"</option>"
+    }
 
 }
 
@@ -26,6 +43,9 @@ function init(/** EVENTUALI PARAMETRI */){
  */
 function acquista(/** EVENTUALI PARAMETRI */){
 
+}
+
+async function richiediPercorsi(){
 }
 
 
