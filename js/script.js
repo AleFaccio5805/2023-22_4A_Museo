@@ -66,7 +66,6 @@ function disegnaGrafico(stats){
 
     let canvas = document.createElement("canvas");
     canvas.style.height="300px";
-    canvas.style.width = "300px";
     document.getElementById("mainGrafico").appendChild(canvas);
     let grafico = new Chart(canvas, {
         type: 'polarArea',

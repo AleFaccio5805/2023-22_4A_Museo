@@ -1,36 +1,58 @@
-/*
-    Completa le seguenti regole con l'obiettivo di ottenere l'interfaccia mostrata
-    nell'immagine fornita (su classroom o al proiettore)
-*/
-
-body, main{
-
+#header{
+    font-size: 30pt;
+    text-shadow: 4px 4px yellow;
+    margin-bottom: 40px;
 }
 
-header{
-
-}
-
-label, select{
-
-}
-
-main{
-
-}
-
-section > main{
-
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    overflow: hidden;
 }
 
 footer{
-    
+    position: relative;
+    height: 50px;
+    margin-top: 500px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+}
+
+#section1{
+    float: left;
+    margin-left: 200px;
+}
+
+#section2{
+    float: right;
+    margin-right: 200px;
 }
 
 button{
-    margin-top:20px;
+    margin-top:40px;
     width: 150px;
     height: 40px;
     background-color: greenyellow;
     border-radius: 5px;
+    cursor: pointer;
+}
+
+#header1{
+    font-size: 30pt;
+    text-shadow: 4px 4px yellow;
+    text-align: center;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 100px;
+}
+
+main{
+    text-align: center;
+}
+
+#mainGrafico{
 }
