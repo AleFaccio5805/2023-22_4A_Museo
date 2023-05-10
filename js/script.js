@@ -16,6 +16,8 @@ var urlBase = window.location.href;
 window.onload = init();
 
 async function init(/** EVENTUALI PARAMETRI */){
+
+    // PERCORSI
     let perc = await fetch(urlBase + "server/getPercorsi.php", {method:"get"});
 
     let datiDB = await perc.json();
@@ -28,6 +30,48 @@ async function init(/** EVENTUALI PARAMETRI */){
         combo.innerHTML += "<option value=" + datiDB.percorsi[i].descr + ">" + datiDB.percorsi[i].descr +"</option>"
     }
 
+
+    //GRAFICO STATISTICHE
+    let stats = await fetch(urlBase + "server/getStatistiche.php", {method:"get"});
+    let datiStats = await stats.json();
+
+    disegnaGrafico(datiStats);
+
+
+}
+
+function disegnaGrafico(stats){
+    let dati = {
+        labels: [],
+        datasets: [{
+          label: 'My First Dataset',
+          data: new Array()
+        }]
+      };
+
+    let prova = [];
+    
+    dati.labels.push("Bambini");
+    dati.labels.push("Anziani");
+    dati.labels.push("Abbonati");
+    dati.labels.push("Studenti");
+
+    prova.push(parseInt(stats.num11));
+    prova.push(parseInt(stats.num80));
+    prova.push(parseInt(stats.abbo));
+    prova.push(parseInt(stats.stud));
+
+    dati.datasets[0].data = prova;
+    
+
+    let canvas = document.createElement("canvas");
+    canvas.style.height="300px";
+    canvas.style.width = "300px";
+    document.getElementById("mainGrafico").appendChild(canvas);
+    let grafico = new Chart(canvas, {
+        type: 'polarArea',
+        data: dati
+    });
 }
 
 /**
@@ -45,8 +89,6 @@ function acquista(/** EVENTUALI PARAMETRI */){
 
 }
 
-async function richiediPercorsi(){
-}
 
 
 
